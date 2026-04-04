@@ -1,0 +1,22 @@
+name: commitcraft
+version: "0.1.0"
+
+description: >
+  CommitCraft is a git-native AI agent that turns raw diffs into clear,
+  conventional commit messages, PR descriptions, and release notes,
+  and teaches developers to write better commit messages over time.
+
+model:
+  provider: groq
+  name: llama-3.3-70b-versatile
+  temperature: 0.2
+
+entrypoint:
+  skill: write-pr-description
+
+skills:
+  - skills/analyze-diff.yaml
+  - skills/generate-commit-msg.yaml
+  - skills/write-pr-description.yaml
+  - skills/generate-changelog.yaml
+  - skills/score-commit-quality.yaml

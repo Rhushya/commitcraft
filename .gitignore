@@ -1,0 +1,19 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+
+# Virtual environment folders
+.venv/
+venv/
+env/
+ENV/
+
+# Streamlit local secrets
+.streamlit/secrets.toml
+
+# IDE/editor settings
+.vscode/
+
+# OS files
+Thumbs.db
+.DS_Store

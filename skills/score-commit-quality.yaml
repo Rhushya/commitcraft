@@ -1,0 +1,23 @@
+name: score-commit-quality
+description: >
+  Score a commit message 1-10 and suggest an improved version.
+
+input:
+  - name: commit_message
+    type: string
+    description: The commit message to evaluate.
+  - name: diff
+    type: string
+    required: false
+    description: Optional diff to verify the message matches the change.
+
+output:
+  - name: score
+    type: integer
+    description: Quality score 1-10 (higher is better).
+  - name: reasoning
+    type: string
+    description: Bullet explanation per RULES.md.
+  - name: improved_example
+    type: string
+    description: A revised commit message scoring 9-10.

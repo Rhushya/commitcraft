@@ -1,0 +1,17 @@
+name: generate-changelog
+description: >
+  Turn a series of commit messages into a Markdown release changelog.
+
+input:
+  - name: commit_log
+    type: string
+    description: Output of `git log --oneline` or list of commit messages.
+  - name: version
+    type: string
+    required: false
+    description: Optional version or tag (e.g. v1.4.0).
+
+output:
+  - name: changelog_markdown
+    type: string
+    description: Markdown changelog with Added, Changed, Fixed, Removed sections.

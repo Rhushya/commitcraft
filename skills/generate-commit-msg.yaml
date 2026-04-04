@@ -1,0 +1,21 @@
+name: generate-commit-msg
+description: >
+  Generate a high-quality Conventional Commit message from a diff or summary.
+
+input:
+  - name: summary
+    type: string
+    description: Structured change summary or raw diff.
+  - name: suggested_type
+    type: string
+    required: false
+    description: Optional preferred commit type (feat, fix, refactor, etc.).
+  - name: scope
+    type: string
+    required: false
+    description: Optional scope (e.g. api, auth, ui).
+
+output:
+  - name: commit_message
+    type: string
+    description: Single-line Conventional Commit message per RULES.md.

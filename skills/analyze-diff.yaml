@@ -1,0 +1,19 @@
+name: analyze-diff
+description: >
+  Parse a unified git diff and extract a structured summary of what changed.
+
+input:
+  - name: diff
+    type: string
+    description: Unified diff text from `git diff` or `git show`.
+
+output:
+  - name: summary
+    type: string
+    description: High-level human-readable summary of all changes.
+  - name: changed_files
+    type: list
+    description: List of files touched with role (added/modified/deleted).
+  - name: change_breakdown
+    type: string
+    description: Bullet list of key edits and behavior changes.
