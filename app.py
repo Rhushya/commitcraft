@@ -234,21 +234,80 @@ st.markdown(
         font-size: 13px;
     }
     .hero {
-        background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 48%, #0ea5e9 100%);
-        border: 1px solid rgba(255, 255, 255, 0.22);
-        border-radius: 14px;
-        padding: 1rem 1.1rem;
-        margin-bottom: 0.8rem;
+        background: linear-gradient(145deg, #0b1738 0%, #1d4ed8 55%, #1fa2e1 100%);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        padding: 1.15rem 1.2rem;
+        margin-bottom: 0.9rem;
         color: #f8fafc;
+        box-shadow: 0 12px 30px rgba(2, 6, 23, 0.35);
     }
-    .hero h1 {
+    .hero-title {
         margin: 0;
-        font-size: 1.6rem;
+        font-size: 2rem;
+        font-weight: 700;
         line-height: 1.25;
     }
-    .hero p {
+    .hero-subtitle {
         margin: 0.4rem 0 0 0;
         color: #dbeafe;
+        font-size: 1.05rem;
+    }
+    .hero-tags {
+        margin-top: 0.75rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+    }
+    .hero-tag {
+        font-size: 0.78rem;
+        letter-spacing: 0.03em;
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.26);
+        border-radius: 999px;
+        padding: 0.2rem 0.55rem;
+        color: #e2e8f0;
+    }
+    .stat-card {
+        background: linear-gradient(180deg, rgba(15, 23, 42, 0.06) 0%, rgba(15, 23, 42, 0.02) 100%);
+        border: 1px solid rgba(148, 163, 184, 0.28);
+        border-radius: 12px;
+        padding: 0.85rem 0.9rem;
+        min-height: 136px;
+    }
+    .stat-label {
+        margin: 0;
+        font-size: 0.8rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #64748b;
+        font-weight: 600;
+    }
+    .stat-value {
+        margin: 0.35rem 0 0.35rem 0;
+        font-size: 1.2rem;
+        font-weight: 700;
+        line-height: 1.3;
+        white-space: normal;
+        word-break: break-word;
+        color: #0f172a;
+    }
+    .stat-note {
+        margin: 0;
+        font-size: 0.9rem;
+        line-height: 1.35;
+        color: #475569;
+    }
+    @media (max-width: 900px) {
+        .hero-title {
+            font-size: 1.55rem;
+        }
+        .hero-subtitle {
+            font-size: 0.96rem;
+        }
+        .stat-card {
+            min-height: 120px;
+        }
     }
     </style>
     """,
@@ -257,17 +316,52 @@ st.markdown(
 st.markdown(
     """
     <div class="hero">
-      <h1>CommitCraft - Git Communication Agent</h1>
-      <p>Turn raw git changes into clean commit history, PR narratives, and release notes in seconds.</p>
+      <div class="hero-title">CommitCraft - Git Communication Agent</div>
+      <div class="hero-subtitle">Turn raw git changes into clean commit history, PR narratives, and release notes in seconds.</div>
+      <div class="hero-tags">
+        <span class="hero-tag">Conda Ready</span>
+        <span class="hero-tag">Groq Powered</span>
+        <span class="hero-tag">GitAgent Compliant</span>
+      </div>
     </div>
     """,
     unsafe_allow_html=True,
 )
-st.caption(f"Git-native AI agent · Groq free LLM ({MODEL}) · GitAgent Hackathon 2026")
+st.caption(f"Git-native AI agent | Groq free LLM ({MODEL}) | GitAgent Hackathon 2026")
 stat1, stat2, stat3 = st.columns(3)
-stat1.metric("Workflows", "5")
-stat2.metric("Model", MODEL)
-stat3.metric("Output Types", "Commit, PR, Changelog")
+with stat1:
+    st.markdown(
+        """
+        <div class="stat-card">
+          <p class="stat-label">Workflows</p>
+          <p class="stat-value">5 workflows</p>
+          <p class="stat-note">Commit Message, PR Description, Changelog, Release Pack, Score Commit</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+with stat2:
+    st.markdown(
+        f"""
+        <div class="stat-card">
+          <p class="stat-label">Model</p>
+          <p class="stat-value">{MODEL}</p>
+          <p class="stat-note">Low-latency generation through Groq's inference stack</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+with stat3:
+    st.markdown(
+        """
+        <div class="stat-card">
+          <p class="stat-label">Output Types</p>
+          <p class="stat-value">Commit, PR, Changelog, Score</p>
+          <p class="stat-note">Copy-ready and download-ready text and markdown outputs</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 st.divider()
 
 with st.sidebar:
