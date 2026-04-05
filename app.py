@@ -188,21 +188,26 @@ d4e5f6a docs: add windows conda setup section"""
 SAMPLE_SCORE_MESSAGE = "fix: update stuff"
 
 
-def rerun_app():
-    try:
-        st.rerun()
-    except Exception:
-        st.experimental_rerun()
+def set_input_value(text_key: str, value: str):
+    st.session_state[text_key] = value
 
 
 def render_input_toolbar(text_key: str, sample_value: str):
     b1, b2 = st.columns(2)
-    if b1.button("Load sample", key=f"load-{text_key}", use_container_width=True):
-        st.session_state[text_key] = sample_value
-        rerun_app()
-    if b2.button("Clear", key=f"clear-{text_key}", use_container_width=True):
-        st.session_state[text_key] = ""
-        rerun_app()
+    b1.button(
+        "Load sample",
+        key=f"load-{text_key}",
+        use_container_width=True,
+        on_click=set_input_value,
+        args=(text_key, sample_value),
+    )
+    b2.button(
+        "Clear",
+        key=f"clear-{text_key}",
+        use_container_width=True,
+        on_click=set_input_value,
+        args=(text_key, ""),
+    )
 
 
 def mode_help(selected_mode: str) -> str:
